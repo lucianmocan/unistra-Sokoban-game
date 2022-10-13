@@ -39,6 +39,10 @@ Grid init_level(const char* file_path){
 		int current_column = 0;
 		while(*buffer && *buffer != '\n'){
 			grid->game_grid[current_row][current_column] = *buffer;
+			if (*buffer == PLAYER){
+				grid->player[x] = current_column;
+				grid->player[y] = current_row;
+			}
 			current_column += 1;
 			buffer += 1;
 		}
