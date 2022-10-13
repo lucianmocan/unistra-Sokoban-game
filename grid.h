@@ -1,5 +1,7 @@
 #ifndef GRID_HEADER
 #define GRID_HEADER
+#include "player.h"
+
 enum CaseType{
 	WALL = '#',
 	BOX = '$',
@@ -16,6 +18,7 @@ typedef struct Grid{
 	enum CaseType** game_grid; ///< Tableau contenant les entités présents dans le jeu
 	int column_number; ///< Nombre de colonne de game_grid
 	int row_number; ///< Nomber de ligne de game_grid
+	Player player;
 } *Grid, str_grid;
 Grid init_level(const char* file_path);
 
