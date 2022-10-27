@@ -1,6 +1,9 @@
 #ifndef PLAYER_HEADER
 #define PLAYER_HEADER
 
+#include <stdio.h>
+#include <stdlib.h>
+
 enum Direction {
     TOP = 'w',
     LEFT = 'a',

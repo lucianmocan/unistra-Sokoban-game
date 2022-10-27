@@ -1,7 +1,6 @@
-#include "grid.h"
-#include "player.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "grid.h"
 
 Grid init_level(const char* file_path){
 	// ouverture du fichier en mode lecture
@@ -32,7 +31,7 @@ Grid init_level(const char* file_path){
 	}
 
 	int current_row = 0;
-	int current_goal = 0;
+	// int current_goal = 0;
 
 	// On lit le fichier ligne par ligne jusqu'à la fin du fichier
 	while(fgets(line, 100, file) != NULL){

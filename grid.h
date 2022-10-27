@@ -20,6 +20,13 @@ typedef struct Grid{
 	int row_number; ///< Nomber de ligne de game_grid
 	Player player;
 } *Grid, str_grid;
+
 Grid init_level(const char* file_path);
+
+Grid move_player(Grid grid, enum Direction direction);
+
+Grid move_player(Grid grid, enum Direction direction);
+
+void affiche_niveau(Grid grid);
 
 #endif

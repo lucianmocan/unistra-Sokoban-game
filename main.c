@@ -1,8 +1,10 @@
-#include <stdio.h>
-#include "grid.h"
-#include <stdbool.h>
+#include "main.h"
+
 int main(void){
 	
+	Grid grid = init_level("/adhome/lmocan/Documents/SokobanTechDev/level1.txt");
+	affiche_niveau(grid);
+
 	bool run = true;
 	while(run){
 		char entry = fgetc(stdin);
@@ -11,7 +13,15 @@ int main(void){
 				run = false;
 				break;
 			}
+			default: {
+				if (entry == 'a' || entry == 'w' || entry == 's' || entry == 'd'){
+					grid = move_player(grid, entry);
+					affiche_niveau(grid);
+				}
+				break;
+			}
 		}
 	}
+	return 0;
 }
 
