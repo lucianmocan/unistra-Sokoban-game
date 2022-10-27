@@ -9,8 +9,8 @@ enum Direction {
 };
 
 typedef struct Player{
-    float x;
-    float y;
+    int x;
+    int y;
 } Player;
 
 #endif

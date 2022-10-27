@@ -69,6 +69,7 @@ void affiche_niveau(Grid grid){
 	
 // 	Grid grid = init_level("/adhome/lmocan/Documents/SokobanTechDev/level1.txt");
 // 	affiche_niveau(grid);
+// 	printf("Player position: %lf %lf\n", grid->player.x, grid->player.y);
 // 	return 0;
 // }
 
