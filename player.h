@@ -2,13 +2,13 @@
 #define PLAYER_HEADER
 
 enum Direction {
-    TOP = '↑',
-    LEFT = '←',
-    RIGHT = '→',
-    BOTTOM = '↓'
-}
+    TOP = 'w',
+    LEFT = 'a',
+    RIGHT = 'd',
+    BOTTOM = 's'
+};
 
-typedef struct Player {
+typedef struct Player{
     float x;
     float y;
 } Player;
