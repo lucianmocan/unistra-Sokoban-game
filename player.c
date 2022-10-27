@@ -16,6 +16,9 @@ Grid move_player(Grid grid, enum Direction direction){
                 if (tmp_1 == BOX){
                     if(tmp_2 != WALL){
                         grid->game_grid[y-2][x] = BOX;
+                        if(tmp_2 == GOAL){
+                            grid->count_targets++;
+                        }
                     }
                 }
                 if (!(tmp_2 == WALL && tmp_1 == BOX)){
@@ -34,6 +37,9 @@ Grid move_player(Grid grid, enum Direction direction){
                 if (tmp_1 == BOX){
                     if(tmp_2 != WALL){
                         grid->game_grid[y+2][x] = BOX;
+                        if(tmp_2 == GOAL){
+                            grid->count_targets++;
+                        }
                     }
                 }
                 if (!(tmp_2 == WALL && tmp_1 == BOX)){
@@ -52,6 +58,9 @@ Grid move_player(Grid grid, enum Direction direction){
                 if (tmp_1 == BOX){
                     if(tmp_2 != WALL){
                         grid->game_grid[y][x-2] = BOX;
+                        if(tmp_2 == GOAL){
+                            grid->count_targets++;
+                        }
                     }
                 }
                 if (!(tmp_2 == WALL && tmp_1 == BOX)){
@@ -70,6 +79,9 @@ Grid move_player(Grid grid, enum Direction direction){
                 if (tmp_1 == BOX){
                     if(tmp_2 != WALL){
                         grid->game_grid[y][x+2] = BOX;
+                        if(tmp_2 == GOAL){
+                            grid->count_targets++;
+                        }
                     }
                 }
                 if (!(tmp_2 == WALL && tmp_1 == BOX)){

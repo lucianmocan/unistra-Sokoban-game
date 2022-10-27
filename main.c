@@ -18,6 +18,10 @@ int main(void){
 					grid = move_player(grid, entry);
 					affiche_niveau(grid);
 				}
+				printf("targets found: %d\n", grid->count_targets);
+				if (checkIfDone(grid)){
+					run = false;
+				}
 				break;
 			}
 		}

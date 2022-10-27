@@ -1,5 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "grid.h"
 
 Grid init_level(const char* file_path){
@@ -23,6 +21,8 @@ Grid init_level(const char* file_path){
 	grid->column_number = number_column;
 	grid->row_number = number_row;
 	grid->game_grid = (enum CaseType**) malloc(number_row * sizeof(enum CaseType*));
+	grid->targets = 0;
+	grid->count_targets = 0;
 
 	for (int i = 0; i < number_row; i++){
 		for (int j = 0; j < number_column; j++){
@@ -43,12 +43,15 @@ Grid init_level(const char* file_path){
 				grid->player.x = current_column;
 				grid->player.y = current_row;
 			}
+			if (*buffer == GOAL){
+				grid->targets++;
+			}
 			current_column += 1;
 			buffer += 1;
 		}
 		current_row += 1;
 	}
-
+	printf("targets to find: %d\n", grid->targets);
 	// fermeture du fichier
 	fclose(file);
 	return grid;
@@ -62,6 +65,10 @@ void affiche_niveau(Grid grid){
 		}
 		putchar('\n');
 	}
+}
+
+bool checkIfDone(Grid grid){
+	return (grid->targets == grid->count_targets);
 }
 
 // int main(){
