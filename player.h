@@ -16,4 +16,14 @@ typedef struct Player{
     int y;
 } Player;
 
+typedef struct Goal{
+    int x;
+    int y;
+} Goal;
+
+typedef struct Goals{
+    Goal* goals;
+    int size;
+} Goals;
+
 #endif
