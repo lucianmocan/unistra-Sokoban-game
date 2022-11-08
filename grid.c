@@ -23,6 +23,8 @@ Grid init_level(const char* file_path){
 	grid->game_grid = (enum CaseType**) malloc(number_row * sizeof(enum CaseType*));
 	grid->targets = 0;
 	grid->count_targets = 0;
+	grid->goals.size = number_column;
+	grid->goals.goals = (Goal*) malloc(10 * sizeof(Goal));
 
 	for (int i = 0; i < number_row; i++){
 		for (int j = 0; j < number_column; j++){
@@ -44,6 +46,12 @@ Grid init_level(const char* file_path){
 				grid->player.y = current_row;
 			}
 			if (*buffer == GOAL){
+				if (grid->targets > 10){
+					grid->goals.size += 10;
+					grid->goals.goals = (Goal*) realloc(grid->goals.goals, grid->goals.size * sizeof(Goal));
+				}
+				grid->goals.goals[grid->targets].x = current_column;
+				grid->goals.goals[grid->targets].y = current_row;
 				grid->targets++;
 			}
 			current_column += 1;
@@ -51,6 +59,9 @@ Grid init_level(const char* file_path){
 		}
 		current_row += 1;
 	}
+	// for (int i = 0; i < grid->targets; i++){
+	// 	printf("%d %d\n", grid->goals.goals[i].x, grid->goals.goals[i].y);
+	// }
 	printf("targets to find: %d\n", grid->targets);
 	// fermeture du fichier
 	fclose(file);
