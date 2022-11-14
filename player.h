@@ -21,10 +21,10 @@ typedef struct Goal{
     int y;
 } Goal;
 
-typedef struct Goals{
-    Goal* goals;
+typedef struct StrGoals{
+    Goal* arrayOfGoals;
     int size;
-} Goals;
+} StrGoals;
 
 typedef struct Point{
     int x;

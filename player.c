@@ -1,13 +1,13 @@
 
+#include <stdbool.h>
+
 #include "grid.h"
 #include "player.h"
 
 
-bool search_point(Grid grid, Point p){
-    printf("Current position: %d %d\n", p.x, p.y);
+bool checkIfPointIsGoal(Grid grid, Point p){
     for (int i = 0; i<grid->targets; i++){
-        if (grid->goals.goals[i].x == p.x && grid->goals.goals[i].y == p.y){
-            printf("Goal at this same position: %d %d\n", grid->goals.goals[i].x, grid->goals.goals[i].y);
+        if (grid->goals.arrayOfGoals[i].x == p.x && grid->goals.arrayOfGoals[i].y == p.y){
             return true;
         }
     }
@@ -30,7 +30,7 @@ int motionPlane(enum Direction direction){
 }
 
 void updatePreviousCell(Grid grid){
-    if (search_point(grid, (Point) {grid->player.x, grid->player.y})){
+    if (checkIfPointIsGoal(grid, (Point) {grid->player.x, grid->player.y})){
         grid->game_grid[grid->player.y][grid->player.x] = GOAL;
     }
     else {
@@ -53,24 +53,24 @@ void make_move(
         )
     {
     int motn_plane = motionPlane(direction);
-    enum CaseType t1 = grid->game_grid[c_1.y][c_1.x]; // valeur de la case c_1
-    enum CaseType t2 = grid->game_grid[c_2.y][c_2.x]; // valeur de la case c_2
-    enum CaseType* pt1 = &grid->game_grid[c_1.y][c_1.x]; // adresse de la case c_1
-    enum CaseType* pt2 = &grid->game_grid[c_2.y][c_2.x]; // adresse de la case c_2
-    if (t1 == BOX){
-        if (t2 != WALL && !search_point(grid, c_1)){
-            *pt1 = PLAYER;
-            *pt2 = BOX;
+    enum CaseType val_cell_next_1 = grid->game_grid[c_1.y][c_1.x]; // valeur de la case c_1
+    enum CaseType val_cell_next_2 = grid->game_grid[c_2.y][c_2.x]; // valeur de la case c_2
+    enum CaseType* address_next_1 = &grid->game_grid[c_1.y][c_1.x]; // adresse de la case c_1
+    enum CaseType* address_next_2 = &grid->game_grid[c_2.y][c_2.x]; // adresse de la case c_2
+    if (val_cell_next_1 == BOX){
+        if (val_cell_next_2 != WALL && !checkIfPointIsGoal(grid, c_1)){
+            *address_next_1 = PLAYER;
+            *address_next_2 = BOX;
             updatePreviousCell(grid);
             updatePlayerPosition(grid, c_1, motn_plane);
-            if(t2 == GOAL){
+            if(val_cell_next_2 == GOAL){
                 grid->count_targets++;
             }
         }
     }
     else {
-        if (!(t1 == WALL)){
-            *pt1 = PLAYER;
+        if (!(val_cell_next_1 == WALL)){
+            *address_next_1 = PLAYER;
             updatePreviousCell(grid);
             updatePlayerPosition(grid, c_1, motn_plane);
         }

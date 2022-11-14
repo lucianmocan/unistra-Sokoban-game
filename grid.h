@@ -26,7 +26,7 @@ typedef struct Grid{
 	int targets; ///Number of targets on the map
 	int count_targets; ///Number of targets covered
 	Player player;
-	Goals goals; // array containing the goals and their coordinates
+	StrGoals goals; // array containing the goals and their coordinates
 } *Grid, str_grid;
 
 Grid init_level(const char* file_path);

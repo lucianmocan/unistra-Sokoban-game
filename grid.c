@@ -24,7 +24,7 @@ Grid init_level(const char* file_path){
 	grid->targets = 0;
 	grid->count_targets = 0;
 	grid->goals.size = number_column;
-	grid->goals.goals = (Goal*) malloc(10 * sizeof(Goal));
+	grid->goals.arrayOfGoals = (Goal*) malloc(10 * sizeof(Goal));
 
 	for (int i = 0; i < number_row; i++){
 		for (int j = 0; j < number_column; j++){
@@ -48,10 +48,10 @@ Grid init_level(const char* file_path){
 			if (*buffer == GOAL){
 				if (grid->targets > 10){
 					grid->goals.size += 10;
-					grid->goals.goals = (Goal*) realloc(grid->goals.goals, grid->goals.size * sizeof(Goal));
+					grid->goals.arrayOfGoals = (Goal*) realloc(grid->goals.arrayOfGoals, grid->goals.size * sizeof(Goal));
 				}
-				grid->goals.goals[grid->targets].x = current_column;
-				grid->goals.goals[grid->targets].y = current_row;
+				grid->goals.arrayOfGoals[grid->targets].x = current_column;
+				grid->goals.arrayOfGoals[grid->targets].y = current_row;
 				grid->targets++;
 			}
 			current_column += 1;
@@ -83,7 +83,7 @@ bool checkIfDone(Grid grid){
 }
 
 void freeGrid(Grid grid){
-	free(grid->goals.goals);
+	free(grid->goals.arrayOfGoals);
 	free(grid->game_grid);
 	free(grid);
 }
