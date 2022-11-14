@@ -39,4 +39,6 @@ void affiche_niveau(Grid grid);
 
 bool checkIfDone(Grid grid);
 
+void freeGrid(Grid grid);
+
 #endif

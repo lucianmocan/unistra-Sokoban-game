@@ -82,6 +82,11 @@ bool checkIfDone(Grid grid){
 	return (grid->targets == grid->count_targets);
 }
 
+void freeGrid(Grid grid){
+	free(grid->goals.goals);
+	free(grid->game_grid);
+	free(grid);
+}
 // int main(){
 	
 // 	Grid grid = init_level("/adhome/lmocan/Documents/SokobanTechDev/level1.txt");

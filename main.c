@@ -21,6 +21,7 @@ int main(void){
 				printf("targets found: %d\n", grid->count_targets);
 				if (checkIfDone(grid)){
 					run = false;
+					freeGrid(grid);
 				}
 				break;
 			}
