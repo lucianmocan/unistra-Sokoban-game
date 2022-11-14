@@ -2,7 +2,7 @@
 
 int main(void){
 	
-	Grid grid = init_level("/adhome/lmocan/Documents/SokobanTechDev/level1.txt");
+	Grid grid = init_level("level1.txt");
 	affiche_niveau(grid);
 
 	bool run = true;
