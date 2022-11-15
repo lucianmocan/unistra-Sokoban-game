@@ -69,7 +69,7 @@ Grid init_level(const char* file_path){
 	return grid;
 }
 
-void affiche_niveau(Grid grid){
+Grid affiche_niveau(Grid grid){
 	
 	for (int i = 0; i < grid->row_number; i++){
 		for (int j = 0; j < grid->column_number; j++){
@@ -77,23 +77,18 @@ void affiche_niveau(Grid grid){
 		}
 		putchar('\n');
 	}
+	return grid;
 }
 
 bool checkIfDone(Grid grid){
 	return (grid->targets == grid->covered_targets);
 }
 
-void freeGrid(Grid grid){
+Grid freeGrid(Grid grid){
 	free(grid->goals.arrayOfGoals);
 	free(grid->game_grid);
 	free(grid);
+	return NULL;
 }
-// int main(){
-	
-// 	Grid grid = init_level("/adhome/lmocan/Documents/SokobanTechDev/level1.txt");
-// 	affiche_niveau(grid);
-// 	printf("Player position: %lf %lf\n", grid->player.x, grid->player.y);
-// 	return 0;
-// }
 
 

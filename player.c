@@ -29,23 +29,25 @@ int motionPlane(enum Direction direction){
     return motn_plane;
 }
 
-void updatePreviousCell(Grid grid){
+Grid updatePreviousCell(Grid grid){
     if (checkIfPointIsGoal(grid, (Point) {grid->player.x, grid->player.y})){
         grid->game_grid[grid->player.y][grid->player.x] = GOAL;
     }
     else {
         grid->game_grid[grid->player.y][grid->player.x] = NONE;
     }
+    return grid;
 }
 
-void updatePlayerPosition(Grid grid, Point c_1, int motn_plane){
+Grid updatePlayerPosition(Grid grid, Point c_1, int motn_plane){
     if (motn_plane)
         grid->player.y = c_1.y;
     else 
         grid->player.x = c_1.x;
+    return grid;
 }
 
-void make_move(
+Grid make_move(
             Grid grid, 
             enum Direction direction, 
             Point c_1, 
@@ -76,6 +78,7 @@ void make_move(
         }
 
     }
+    return grid;
 }
 
 Grid move_player(Grid grid, enum Direction direction){
@@ -127,10 +130,3 @@ Grid move_player(Grid grid, enum Direction direction){
     }    
     return grid;    
 }
-
-
-// int main(){
-
-
-//     return 0;
-// }
