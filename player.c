@@ -64,7 +64,7 @@ void make_move(
             updatePreviousCell(grid);
             updatePlayerPosition(grid, c_1, motn_plane);
             if(val_cell_next_2 == GOAL){
-                grid->count_targets++;
+                grid->covered_targets++;
             }
         }
     }

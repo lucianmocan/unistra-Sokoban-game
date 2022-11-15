@@ -18,7 +18,7 @@ int main(void){
 					grid = move_player(grid, entry);
 					affiche_niveau(grid);
 				}
-				printf("targets found: %d\n", grid->count_targets);
+				printf("targets found: %d\n", grid->covered_targets);
 				if (checkIfDone(grid)){
 					run = false;
 					freeGrid(grid);

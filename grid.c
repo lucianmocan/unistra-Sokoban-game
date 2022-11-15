@@ -22,8 +22,9 @@ Grid init_level(const char* file_path){
 	grid->row_number = number_row;
 	grid->game_grid = (enum CaseType**) malloc(number_row * sizeof(enum CaseType*));
 	grid->targets = 0;
-	grid->count_targets = 0;
+	grid->covered_targets = 0;
 	grid->goals.size = number_column;
+	grid->goals.count = 0;
 	grid->goals.arrayOfGoals = (Goal*) malloc(10 * sizeof(Goal));
 
 	for (int i = 0; i < number_row; i++){
@@ -46,7 +47,7 @@ Grid init_level(const char* file_path){
 				grid->player.y = current_row;
 			}
 			if (*buffer == GOAL){
-				if (grid->targets > 10){
+				if (grid->goals.count == grid->goals.size){
 					grid->goals.size += 10;
 					grid->goals.arrayOfGoals = (Goal*) realloc(grid->goals.arrayOfGoals, grid->goals.size * sizeof(Goal));
 				}
@@ -79,7 +80,7 @@ void affiche_niveau(Grid grid){
 }
 
 bool checkIfDone(Grid grid){
-	return (grid->targets == grid->count_targets);
+	return (grid->targets == grid->covered_targets);
 }
 
 void freeGrid(Grid grid){
