@@ -1,5 +1,11 @@
 #include "grid.h"
 
+/**
+ * @brief Fonction qui initialise une structure Grid à partir d'un fichier contenant des CaseType.
+ * 
+ * @param file_path Chaine de caractères, le chemin du fichier contenant un niveau.
+ * @return Grid Adresse de la structure qui vient d'être initialisée.
+ */
 Grid init_level(const char* file_path){
 	// ouverture du fichier en mode lecture
 	FILE* file = fopen(file_path, "r");
@@ -67,6 +73,13 @@ Grid init_level(const char* file_path){
 	return grid;
 }
 
+/**
+ * @brief Fonction qui affiche le tableau des tableaux game_grid
+ * representant un certain niveau.
+ * 
+ * @param grid Adresse d'une structure Grid dont on veut afficher le game_grid.
+ * @return Grid La même structure Grid que celle réçue en paramètre.
+ */
 Grid affiche_niveau(Grid grid){
 	
 	for (int i = 0; i < grid->row_number; i++){
@@ -78,10 +91,23 @@ Grid affiche_niveau(Grid grid){
 	return grid;
 }
 
+/**
+ * @brief Fonction qui vérifie si tous les points cibles ont été couverts par une boîte.
+ * 
+ * @param grid Adresse d'une structure Grid.
+ * @return true Si tous les points cibles ont été couverts par une boîte. 
+ * @return false S'il reste des points cibles non couverts.
+ */
 bool checkIfDone(Grid grid){
 	return (grid->targets == grid->covered_targets);
 }
 
+/**
+ * @brief Fonction qui libère le tas à la fin du programme.
+ * 
+ * @param grid Adresse d'une structure Grid.
+ * @return Grid Un pointeur sur NULL.
+ */
 Grid freeGrid(Grid grid){
 	free(grid->goals.arrayOfGoals);
 	for (int i = 0; i < grid->row_number; i++){
