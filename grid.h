@@ -42,4 +42,5 @@ bool checkIfDone(Grid grid);
 
 Grid freeGrid(Grid grid);
 
+bool checkIfPointIsGoal(Grid grid, Point p);
 #endif

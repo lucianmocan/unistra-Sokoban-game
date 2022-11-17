@@ -28,9 +28,7 @@ Grid init_level(const char* file_path){
 	grid->goals.arrayOfGoals = (Goal*) malloc(10 * sizeof(Goal));
 
 	for (int i = 0; i < number_row; i++){
-		for (int j = 0; j < number_column; j++){
 			grid->game_grid[i] = (enum CaseType*) malloc(number_column*sizeof(enum CaseType));
-		}
 	}
 
 	int current_row = 0;
@@ -86,6 +84,9 @@ bool checkIfDone(Grid grid){
 
 Grid freeGrid(Grid grid){
 	free(grid->goals.arrayOfGoals);
+	for (int i = 0; i < grid->row_number; i++){
+			free(grid->game_grid[i]);
+	}
 	free(grid->game_grid);
 	free(grid);
 	return NULL;

@@ -53,7 +53,4 @@ typedef struct Point{
     int y; ///< la coordonnée y
 } Point;
 
-
-bool checkIfPointIsGoal(Grid grid, Point p);
-
 #endif
