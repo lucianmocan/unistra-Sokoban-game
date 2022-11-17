@@ -4,7 +4,14 @@
 #include "grid.h"
 #include "player.h"
 
-
+/**
+ * @brief Fonction qui vérifie si un certain point représente un point cible.
+ * 
+ * @param grid Adresse d'une structure Grid.
+ * @param p Une structure Point, coordonnées du point qu'on cherche à vérifier.
+ * @return true Si p correspond à un point cible.
+ * @return false Si p est un point autre qu'un point cible.
+ */
 bool checkIfPointIsGoal(Grid grid, Point p){
     for (int i = 0; i<grid->targets; i++){
         if (grid->goals.arrayOfGoals[i].x == p.x && grid->goals.arrayOfGoals[i].y == p.y){
@@ -14,6 +21,12 @@ bool checkIfPointIsGoal(Grid grid, Point p){
     return false;
 }
 
+/**
+ * @brief Fonction qui aide à déterminer le plan de mouvement d'une direction.
+ * 
+ * @param direction Une direction de 4 possibles Direction.
+ * @return int 1 si c'est le plan vertical, 0 si c'est le plan horizontal.
+ */
 int motionPlane(enum Direction direction){
     int motn_plane;
     switch(direction){
@@ -29,6 +42,12 @@ int motionPlane(enum Direction direction){
     return motn_plane;
 }
 
+/**
+ * @brief Fonction qui met à jour la céllule précédant la position courante du joueur.
+ * 
+ * @param grid Adresse d'une structure Grid. 
+ * @return Grid Adresse de la structure Grid avec la mise à jour de la céllule précedante.
+ */
 Grid updatePreviousCell(Grid grid){
     if (checkIfPointIsGoal(grid, (Point) {grid->player.x, grid->player.y})){
         grid->game_grid[grid->player.y][grid->player.x] = GOAL;
@@ -39,6 +58,14 @@ Grid updatePreviousCell(Grid grid){
     return grid;
 }
 
+/**
+ * @brief Fonction qui met à jour la position courante du joueur.
+ * 
+ * @param grid Adresse d'une structure Grid.
+ * @param c_1 Un Point contenant les coordonnées de la céllule suivante en dépendance du plan de mouvement
+ * @param motn_plane Le plan de mouvement. Vertical si == 1, horizontal si == 0;
+ * @return Grid Adresse de la structure Grid avec la mise à jour de la position courante du joueur.
+ */
 Grid updatePlayerPosition(Grid grid, Point c_1, int motn_plane){
     if (motn_plane)
         grid->player.y = c_1.y;
@@ -47,6 +74,15 @@ Grid updatePlayerPosition(Grid grid, Point c_1, int motn_plane){
     return grid;
 }
 
+/**
+ * @brief Fonction qui réalise un mouvement dans une certaine diréction.
+ * 
+ * @param grid Adresse d'une structure Grid.
+ * @param direction La direction du mouvement.
+ * @param c_1 Un Point contenant les coordonnées de la céllule suivante.
+ * @param c_2 Un Point contenant les coordonnées de la céllule suivant la céllule suivante.
+ * @return Grid 
+ */
 Grid make_move(
             Grid grid, 
             enum Direction direction, 
@@ -81,6 +117,13 @@ Grid make_move(
     return grid;
 }
 
+/**
+ * @brief 
+ * 
+ * @param grid 
+ * @param direction 
+ * @return Grid 
+ */
 Grid move_player(Grid grid, enum Direction direction){
 
     int x = grid->player.x;
