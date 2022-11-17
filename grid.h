@@ -32,6 +32,7 @@ typedef struct Grid{
 	StrGoals goals; ///< array containing the goals and their coordinates
 } *Grid, str_grid;
 
+
 Grid init_level(const char* file_path);
 
 Grid move_player(Grid grid, enum Direction direction);
@@ -40,7 +41,8 @@ Grid affiche_niveau(Grid grid);
 
 bool checkIfDone(Grid grid);
 
-Grid freeGrid(Grid grid);
+void freeGrid(Grid grid);
 
 bool checkIfPointIsGoal(Grid grid, Point p);
+
 #endif

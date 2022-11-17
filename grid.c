@@ -106,16 +106,14 @@ bool checkIfDone(Grid grid){
  * @brief Fonction qui libère le tas à la fin du programme.
  * 
  * @param grid Adresse d'une structure Grid.
- * @return Grid Un pointeur sur NULL.
  */
-Grid freeGrid(Grid grid){
+void freeGrid(Grid grid){
 	free(grid->goals.arrayOfGoals);
 	for (int i = 0; i < grid->row_number; i++){
 			free(grid->game_grid[i]);
 	}
 	free(grid->game_grid);
 	free(grid);
-	return NULL;
 }
 
 
