@@ -16,7 +16,7 @@ Grid init_level(const char* file_path){
 
 	char line[100] = {0};
 	int number_column = 0; // nombre de colonne
-	int number_row = 0; /// nombre de ligne
+	int number_row = 0; // nombre de ligne
 	int number_goals = 0;
 
 	// on lit la première ligne du fichier
