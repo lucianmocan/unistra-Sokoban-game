@@ -1,4 +1,3 @@
-
 #include <stdbool.h>
 
 #include "grid.h"
@@ -81,7 +80,7 @@ Grid updatePlayerPosition(Grid grid, Point c_1, int motn_plane){
  * @param direction La direction du mouvement.
  * @param c_1 Un Point contenant les coordonnées de la céllule suivante.
  * @param c_2 Un Point contenant les coordonnées de la céllule suivant la céllule suivante.
- * @return Grid 
+ * @return Grid Adresse de la structure Grid modifiée représentant la réalisation du mouvement.
  */
 Grid make_move(
             Grid grid, 
@@ -118,11 +117,12 @@ Grid make_move(
 }
 
 /**
- * @brief 
+ * @brief Fonction qui calcule les coordonnées des céllules
+ * qui pourraient être impliquées dans le mouvement et les fournit à la fonction make_move().
  * 
- * @param grid 
- * @param direction 
- * @return Grid 
+ * @param grid Adresse d'une structure Grid.
+ * @param direction La direction du mouvement.
+ * @return Grid Adresse de la structure Grid modifiée représentant la réalisation du mouvement.
  */
 Grid move_player(Grid grid, enum Direction direction){
 
