@@ -67,7 +67,7 @@ Grid init_level(const char* file_path){
 	// for (int i = 0; i < grid->targets; i++){
 	// 	printf("%d %d\n", grid->goals.goals[i].x, grid->goals.goals[i].y);
 	// }
-	printf("targets to find: %d\n", grid->targets);
+	// printf("targets to find: %d\n", grid->targets);
 	// fermeture du fichier
 	fclose(file);
 	return grid;

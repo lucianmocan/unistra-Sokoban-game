@@ -2,9 +2,12 @@ CC = gcc -g
 CFLAGS = -Wall -Wextra
 LDFLAGS = -lm
 SOURCES = $(wildcard *.c)
+HEADERS = $(wildcard *.h)
 OBJECTS = $(SOURCES:.c=.o)
-DOCS = html
 EXEC = main
+DOCS = html
+LEVELS = $(wildcard *.txt)
+TARNAME = MOCAN_Lucian
 
 .PHONY: all
 all: $(EXEC)
@@ -21,10 +24,10 @@ $(EXEC): $(OBJECTS)
 	$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm -rf $(OBJECTS) $(EXEC) $(DOCS)
+	rm -rf $(OBJECTS) $(EXEC) $(DOCS) $(TARNAME).tar.gz
 
 doc:
 	doxygen Doxyfile
 
 archive:
-
+	tar -cf $(TARNAME).tar.gz $(SOURCES) $(HEADERS) $(LEVELS) Doxyfile README.md

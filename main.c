@@ -20,7 +20,7 @@ int main(void){
 					grid = move_player(grid, entry);
 					display_level(grid);
 				}
-				printf("targets found: %d\n", grid->covered_targets);
+				// printf("targets found: %d\n", grid->covered_targets);
 				if (checkIfDone(grid)){
 					run = false;
 					freeGrid(grid);
