@@ -2,7 +2,8 @@ CC = gcc -g
 CFLAGS = -Wall -Wextra
 LDFLAGS = -lm
 SOURCES = $(wildcard *.c)
-OBJETS = $(SOURCES:.c=.o)
+OBJECTS = $(SOURCES:.c=.o)
+DOCS = html
 EXEC = main
 
 .PHONY: all
@@ -10,7 +11,9 @@ all: $(EXEC)
 
 .PHONY: clean
 
-$(EXEC): $(OBJETS)
+.PHONY: doc
+
+$(EXEC): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 
@@ -18,9 +21,10 @@ $(EXEC): $(OBJETS)
 	$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm *.o
+	rm -rf $(OBJECTS) $(EXEC) $(DOCS)
 
 doc:
+	doxygen Doxyfile
 
 archive:
 
