@@ -5,7 +5,7 @@
 int main(void){
 	
 	Grid grid = init_level("level1.txt");
-	affiche_niveau(grid);
+	display_level(grid);
 
 	bool run = true;
 	while(run){
@@ -18,7 +18,7 @@ int main(void){
 			default: {
 				if (entry == 'a' || entry == 'w' || entry == 's' || entry == 'd'){
 					grid = move_player(grid, entry);
-					affiche_niveau(grid);
+					display_level(grid);
 				}
 				printf("targets found: %d\n", grid->covered_targets);
 				if (checkIfDone(grid)){

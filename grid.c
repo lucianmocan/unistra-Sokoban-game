@@ -80,7 +80,7 @@ Grid init_level(const char* file_path){
  * @param grid Adresse d'une structure Grid dont on veut afficher le game_grid.
  * @return Grid La même structure Grid que celle réçue en paramètre.
  */
-Grid affiche_niveau(Grid grid){
+Grid display_level(Grid grid){
 	
 	for (int i = 0; i < grid->row_number; i++){
 		for (int j = 0; j < grid->column_number; j++){

@@ -37,7 +37,7 @@ Grid init_level(const char* file_path);
 
 Grid move_player(Grid grid, enum Direction direction);
 
-Grid affiche_niveau(Grid grid);
+Grid display_level(Grid grid);
 
 bool checkIfDone(Grid grid);
 
