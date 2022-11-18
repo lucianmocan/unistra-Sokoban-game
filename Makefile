@@ -30,4 +30,4 @@ doc:
 	doxygen Doxyfile
 
 archive:
-	tar -cf $(TARNAME).tar.gz $(SOURCES) $(HEADERS) $(LEVELS) Doxyfile README.md
+	tar -cf $(TARNAME).tar.gz $(SOURCES) $(HEADERS) $(LEVELS) Makefile Doxyfile README.md
