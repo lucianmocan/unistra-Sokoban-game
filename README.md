@@ -1,3 +1,3 @@
-Projet Sokoban (Techniques de dévéloppement L2S3)
+# Projet Sokoban (Techniques de dévéloppement L2S3)
 
 Lucian MOCAN
