@@ -1,6 +1,7 @@
 CC = gcc -g
 CFLAGS = -Wall -Wextra
-LDFLAGS = -lm
+INCLUDE = -Iinstall_dir/include
+LDFLAGS = -lm -Wl,-rpath=install_dir/lib -Linstall_dir/lib -lSDL2
 SOURCES = $(wildcard *.c)
 HEADERS = $(wildcard *.h)
 OBJECTS = $(SOURCES:.c=.o)
@@ -17,11 +18,10 @@ all: $(EXEC)
 .PHONY: doc
 
 $(EXEC): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
-
+	$(CC) $(CFLAGS) -o $@ $^ $(INCLUDE) $(LDFLAGS)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c $< 
 
 clean:
 	rm -rf $(OBJECTS) $(EXEC) $(DOCS) $(TARNAME).tar.gz
