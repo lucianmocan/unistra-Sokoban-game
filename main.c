@@ -4,7 +4,7 @@
 #include "sdl2.h"
 
 
-int main(void){
+int main(){
 	// call function to initialize SDL2 window
 	sdl_init();
 	

@@ -2,7 +2,7 @@
 #include "grid.h"
 
 
-SDLContext context;
+SDLContext context; 
 
 void sdl_init() {
   int const width = 1280;
@@ -33,6 +33,7 @@ void sdl_quit() {
 }
 
 void display_sdl2(Grid grid){
+  printf("%d %d\n", context.height, context.width);
   SDL_Window *window = context.window;
   SDL_Renderer *renderer = context.renderer;
 

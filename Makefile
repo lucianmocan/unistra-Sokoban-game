@@ -24,7 +24,10 @@ $(EXEC): $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< 
 
 clean:
-	rm -rf $(OBJECTS) $(EXEC) $(DOCS) $(TARNAME).tar.gz install_dir
+	rm -rf $(OBJECTS) $(EXEC) $(DOCS) $(TARNAME).tar.gz
+
+clean_dependencies:
+	rm -rf install_dir
 
 doc:
 	doxygen Doxyfile
