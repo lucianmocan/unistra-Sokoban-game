@@ -24,10 +24,13 @@ $(EXEC): $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< 
 
 clean:
-	rm -rf $(OBJECTS) $(EXEC) $(DOCS) $(TARNAME).tar.gz
+	rm -rf $(OBJECTS) $(EXEC) $(DOCS) $(TARNAME).tar.gz install_dir
 
 doc:
 	doxygen Doxyfile
+
+install_dependencies: 
+	cd SDL2 && ./configure --prefix=$(shell pwd)/SDL2/../install_dir && make install -j6
 
 archive:
 	tar -cf $(TARNAME).tar.gz $(SOURCES) $(HEADERS) $(LEVELS) Makefile Doxyfile README.md
