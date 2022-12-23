@@ -1,11 +1,16 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "grid.h"
+#include "sdl2.h"
+
 
 int main(void){
+	// call function to initialize SDL2 window
+	sdl_init();
 	
 	Grid grid = init_level("level1.txt");
-	display_level(grid);
+	// display_level(grid);
+	display_sdl2(grid);
 
 	bool run = true;
 	while(run){
@@ -29,6 +34,8 @@ int main(void){
 			}
 		}
 	}
+	// call function to close SDL2 window
+	sdl_quit();
 	return 0;
 }
 
