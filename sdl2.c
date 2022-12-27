@@ -39,7 +39,6 @@ void display_sdl2(Grid grid){
   int wallsCountVertical = (int) context.height / grid->row_number;
   int cellSize = min(wallsCountVertical, wallsCountHorizontal);
 
-  SDL_Window *window = context.window;
   SDL_Renderer *renderer = context.renderer;
 
   SDL_SetRenderDrawColor(renderer, 126, 126, 126, 255); // couleur grise
@@ -85,4 +84,51 @@ void display_sdl2(Grid grid){
     }
   }
   SDL_RenderPresent(renderer); // On affiche tout
+}
+
+enum Event event_sdl2(){
+
+  SDL_Event ev;
+  SDL_WaitEvent(&ev);
+  printf("%d\n", ev.key.repeat);
+  if (ev.key.repeat == 0){
+  switch(ev.type){
+    case SDL_QUIT:
+      return Quit;
+    case SDL_KEYDOWN:
+      break;
+    case SDL_KEYUP:
+      return None;
+  }
+  switch(ev.key.keysym.sym){
+    case SDLK_UP:
+      return Up;
+    case SDLK_DOWN:
+      return Down;
+    case SDLK_LEFT:
+      return Left;
+    case SDLK_RIGHT:
+      return Right;
+  }
+  }
+  return None;
+} 
+
+
+enum Direction event_to_direction(enum Event event){
+  switch(event){
+    case Up:
+      return TOP;
+    case Down:
+      return BOTTOM;
+    case Right:
+      return RIGHT;
+    case Left:
+      return LEFT;
+    case Quit:
+    case None:
+      break;
+      return UNDEFINED;
+  }
+  return UNDEFINED;
 }
