@@ -1,6 +1,25 @@
 #pragma once
 #include "install_dir/include/SDL2/SDL.h"
 #include "grid.h"
+
+/**
+ * @enum Event
+ * @brief Des actions que l'on peut effectuer dans le jeu.
+ */
+enum Event {
+  Quit, 
+  Left, 
+  Right, 
+  Up, 
+  Down,
+  None
+};
+
+/**
+ * @struct SDLContext sdl2.h
+ * @brief Cette structure contient des informations
+ * concernant l'environnement SDL initialisé.
+ */
 typedef struct SDLContext {
   SDL_Window *window;
   SDL_Renderer *renderer;
@@ -22,6 +41,7 @@ extern SDLContext context;
  * 
  */
 void sdl_init();
+
 /** @brief
  * nettoie la variable global context 
  */
@@ -34,3 +54,11 @@ void sdl_quit();
  * @param grid Adresse de la grille à afficher
  */
 void display_sdl2(Grid grid);
+
+
+/**
+ * @brief renvoye le type d'action à effectuer.
+ * 
+ * @return enum Event 
+ */
+enum Event event_sdl2();
