@@ -12,7 +12,8 @@ enum Direction {
     TOP = 'w', ///< vers le haut
     LEFT = 'a', ///< vers la gauche
     RIGHT = 'd', ///< vers la droite
-    BOTTOM = 's' ///< vers le bas
+    BOTTOM = 's', ///< vers le bas
+    UNDEFINED
 };
 
 /** 
