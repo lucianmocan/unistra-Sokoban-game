@@ -62,3 +62,6 @@ void display_sdl2(Grid grid);
  * @return enum Event 
  */
 enum Event event_sdl2();
+
+
+enum Direction event_to_direction(enum Event event);
