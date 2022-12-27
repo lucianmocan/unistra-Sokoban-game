@@ -1,6 +1,7 @@
 #include "sdl2.h"
 #include "grid.h"
 
+#define min(a,b) (a>b) ? b : a
 
 SDLContext context; 
 
@@ -33,18 +34,55 @@ void sdl_quit() {
 }
 
 void display_sdl2(Grid grid){
-  printf("%d %d\n", context.height, context.width);
+
+  int wallsCountHorizontal = (int) context.width / grid->column_number;
+  int wallsCountVertical = (int) context.height / grid->row_number;
+  int cellSize = min(wallsCountVertical, wallsCountHorizontal);
+
   SDL_Window *window = context.window;
   SDL_Renderer *renderer = context.renderer;
 
   SDL_SetRenderDrawColor(renderer, 126, 126, 126, 255); // couleur grise
   SDL_RenderClear(renderer); // On dessine toute la fenêtre en gris
-  SDL_Rect rect = {    .x = 0,
-                  .y = 0,
-                  .w = 50,
-                  .h = 50
+  for (int i = 0; i < grid->row_number; i++){
+    for (int j = 0; j < grid ->column_number; j++){
+      if (grid->game_grid[i][j] == WALL){
+        SDL_Rect rect = {    .x = j*cellSize,
+                  .y = i*cellSize,
+                  .w = cellSize,
+                  .h = cellSize
               };
-  SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // on choisit la couleur rouge
-  SDL_RenderFillRect(renderer, &rect); // On dessine le rectangle
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0.5); // on choisit la couleur rouge
+        SDL_RenderFillRect(renderer, &rect); // On dessine le rectangle
+      }
+      if (grid->game_grid[i][j] == PLAYER){
+        SDL_Rect rect = {    .x = j*cellSize,
+                  .y = i*cellSize,
+                  .w = cellSize,
+                  .h = cellSize
+              };
+        SDL_SetRenderDrawColor(renderer, 255, 99, 71, 1); // on choisit la couleur rouge
+        SDL_RenderFillRect(renderer, &rect); // On dessine le rectangle
+      }
+      if (grid->game_grid[i][j] == BOX){
+        SDL_Rect rect = {    .x = j*cellSize,
+                  .y = i*cellSize,
+                  .w = cellSize,
+                  .h = cellSize
+              };
+        SDL_SetRenderDrawColor(renderer, 227, 186, 143, 1); // on choisit la couleur rouge
+        SDL_RenderFillRect(renderer, &rect); // On dessine le rectangle
+      }
+      if (grid->game_grid[i][j] == GOAL){
+        SDL_Rect rect = {    .x = j*cellSize,
+                  .y = i*cellSize,
+                  .w = cellSize,
+                  .h = cellSize
+              };
+        SDL_SetRenderDrawColor(renderer, 255, 240, 0, 1); // on choisit la couleur rouge
+        SDL_RenderFillRect(renderer, &rect); // On dessine le rectangle
+      }
+    }
+  }
   SDL_RenderPresent(renderer); // On affiche tout
 }

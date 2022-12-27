@@ -23,7 +23,8 @@ int main(){
 			default: {
 				if (entry == 'a' || entry == 'w' || entry == 's' || entry == 'd'){
 					grid = move_player(grid, entry);
-					display_level(grid);
+					// display_level(grid);
+					display_sdl2(grid);
 				}
 				// printf("targets found: %d\n", grid->covered_targets);
 				if (checkIfDone(grid)){
