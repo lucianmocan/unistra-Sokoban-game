@@ -90,26 +90,21 @@ enum Event event_sdl2(){
 
   SDL_Event ev;
   SDL_WaitEvent(&ev);
-  printf("%d\n", ev.key.repeat);
-  if (ev.key.repeat == 0){
   switch(ev.type){
     case SDL_QUIT:
       return Quit;
     case SDL_KEYDOWN:
+      switch(ev.key.keysym.sym){
+        case SDLK_UP:
+          return Up;
+        case SDLK_DOWN:
+          return Down;
+        case SDLK_LEFT:
+          return Left;
+        case SDLK_RIGHT:
+          return Right;
+      }
       break;
-    case SDL_KEYUP:
-      return None;
-  }
-  switch(ev.key.keysym.sym){
-    case SDLK_UP:
-      return Up;
-    case SDLK_DOWN:
-      return Down;
-    case SDLK_LEFT:
-      return Left;
-    case SDLK_RIGHT:
-      return Right;
-  }
   }
   return None;
 } 

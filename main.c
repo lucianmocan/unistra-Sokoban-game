@@ -43,15 +43,17 @@ int main(){
 			}
 			default: {
 				if (event != None){
+						printf("%c", event);
 						enum Direction entry = event_to_direction(event);
-						printf("%c\n", entry);
-						grid = move_player(grid, entry);
-						display_sdl2(grid);
+						if (entry != UNDEFINED){
+							grid = move_player(grid, entry);
+							display_sdl2(grid);
+						}
 				}
-				// if (checkIfDone(grid)){
-				// 	run = false;
-				// 	freeGrid(grid);
-				// }
+				if (checkIfDone(grid)){
+					run = false;
+					freeGrid(grid);
+				}
 			}
 		}
 	}
