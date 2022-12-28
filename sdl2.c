@@ -108,22 +108,3 @@ enum Event event_sdl2(){
   }
   return None;
 } 
-
-
-enum Direction event_to_direction(enum Event event){
-  switch(event){
-    case Up:
-      return TOP;
-    case Down:
-      return BOTTOM;
-    case Right:
-      return RIGHT;
-    case Left:
-      return LEFT;
-    case Quit:
-    case None:
-      break;
-      return UNDEFINED;
-  }
-  return UNDEFINED;
-}

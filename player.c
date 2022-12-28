@@ -26,15 +26,15 @@ bool checkIfPointIsGoal(Grid grid, Point p){
  * @param direction Une direction de 4 possibles Direction.
  * @return int 1 si c'est le plan vertical, 0 si c'est le plan horizontal.
  */
-int motionPlane(enum Direction direction){
+int motionPlane(enum Event direction){
     int motn_plane;
     switch(direction){
-        case TOP :
-        case BOTTOM : 
+        case Up :
+        case Down : 
             motn_plane = 1;
             break;
-        case LEFT :
-        case RIGHT :
+        case Left :
+        case Right :
             motn_plane = 0;
             break;
     }
@@ -84,7 +84,7 @@ Grid updatePlayerPosition(Grid grid, Point c_1, int motn_plane){
  */
 Grid make_move(
             Grid grid, 
-            enum Direction direction, 
+            enum Event direction, 
             Point c_1, 
             Point c_2
         )
@@ -124,13 +124,12 @@ Grid make_move(
  * @param direction La direction du mouvement.
  * @return Grid Adresse de la structure Grid modifiée représentant la réalisation du mouvement.
  */
-Grid move_player(Grid grid, enum Direction direction){
+Grid move_player(Grid grid, enum Event direction){
 
     int x = grid->player.x;
     int y = grid->player.y;
-
     switch(direction){
-        case TOP: {
+        case Up: {
             int pos_1 = y-1, pos_2 = pos_1 - 1;
             make_move(
                 grid, 
@@ -140,7 +139,7 @@ Grid move_player(Grid grid, enum Direction direction){
             );
             break;
         }
-        case BOTTOM: {
+        case Down: {
             int pos_1 = y+1, pos_2 = pos_1 + 1;
             make_move(
                 grid, 
@@ -150,7 +149,7 @@ Grid move_player(Grid grid, enum Direction direction){
             );
             break;
         }
-        case LEFT: {
+        case Left: {
             int pos_1 = x-1, pos_2 = pos_1 - 1;
             make_move(
                 grid, 
@@ -160,7 +159,7 @@ Grid move_player(Grid grid, enum Direction direction){
             );
             break;
         }
-        case RIGHT: {
+        case Right: {
             int pos_1 = x+1, pos_2 = pos_1 + 1;
             make_move(
                 grid, 

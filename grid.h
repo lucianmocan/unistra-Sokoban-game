@@ -17,6 +17,20 @@ enum CaseType{
 	GOAL = '.', ///< représente une cible
 	NONE = ' ' ///< représente une céllule vide
 };
+
+/**
+ * @enum Event
+ * @brief Des actions que l'on peut effectuer dans le jeu.
+ */
+enum Event {
+  Quit='q', 
+  Left=LEFT, 
+  Right=RIGHT, 
+  Up=TOP, 
+  Down=BOTTOM,
+  None
+};
+
 /**
  * @struct Grid grid.h
  * @brief Cette structure contient les informations 
@@ -35,7 +49,7 @@ typedef struct Grid{
 
 Grid init_level(const char* file_path);
 
-Grid move_player(Grid grid, enum Direction direction);
+Grid move_player(Grid grid, enum Event direction);
 
 Grid display_level(Grid grid);
 

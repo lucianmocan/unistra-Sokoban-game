@@ -3,19 +3,6 @@
 #include "grid.h"
 
 /**
- * @enum Event
- * @brief Des actions que l'on peut effectuer dans le jeu.
- */
-enum Event {
-  Quit, 
-  Left, 
-  Right, 
-  Up, 
-  Down,
-  None
-};
-
-/**
  * @struct SDLContext sdl2.h
  * @brief Cette structure contient des informations
  * concernant l'environnement SDL initialisé.
