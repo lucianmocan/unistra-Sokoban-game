@@ -37,6 +37,10 @@ int motionPlane(enum Event direction){
         case Right :
             motn_plane = 0;
             break;
+        case Quit:
+        case None:
+            printf("Error! This shouldn't happen!\n");
+            exit(1);
     }
     return motn_plane;
 }
@@ -169,6 +173,10 @@ Grid move_player(Grid grid, enum Event direction){
             );
             break;
         }
+        case Quit:
+        case None:
+            printf("Error! This shouldn't happen!");
+            exit(1);
     }    
     return grid;    
 }
