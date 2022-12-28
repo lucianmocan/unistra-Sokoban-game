@@ -22,8 +22,6 @@ int main(){
 	bool run = true;
 	while(run){
 		enum Event ev = handle_event();
-		// enum Event ev = event_sdl2();
-		//    enum Event ev = event();
 		switch(ev){
 			case Quit: {
 				run = false;

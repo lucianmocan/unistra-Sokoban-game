@@ -38,7 +38,6 @@ Grid init_level(const char* file_path){
 	}
 
 	int current_row = 0;
-	// int current_goal = 0;
 
 	// On lit le fichier ligne par ligne jusqu'à la fin du fichier
 	while(fgets(line, 100, file) != NULL){
@@ -64,10 +63,6 @@ Grid init_level(const char* file_path){
 		}
 		current_row += 1;
 	}
-	// for (int i = 0; i < grid->targets; i++){
-	// 	printf("%d %d\n", grid->goals.goals[i].x, grid->goals.goals[i].y);
-	// }
-	// printf("targets to find: %d\n", grid->targets);
 	// fermeture du fichier
 	fclose(file);
 	return grid;
@@ -116,6 +111,11 @@ void freeGrid(Grid grid){
 }
 
 
+/**
+ * @brief renvoye le type d'action à effectuer sans SDL2
+ * 
+ * @return enum Event 
+ */
 enum Event event(){
 	char entry = fgetc(stdin);
 	switch(entry){

@@ -23,12 +23,12 @@ enum CaseType{
  * @brief Des actions que l'on peut effectuer dans le jeu.
  */
 enum Event {
-  Quit='q', 
-  Left=LEFT, 
-  Right=RIGHT, 
-  Up=TOP, 
-  Down=BOTTOM,
-  None
+  Quit='q', ///< quitter le programme
+  Left=LEFT, ///< vers la gauche
+  Right=RIGHT, ///< vers la droite
+  Up=TOP, ///< vers le haut
+  Down=BOTTOM, ///< vers le bas
+  None ///< on fait rien
 };
 
 /**
