@@ -59,4 +59,6 @@ void freeGrid(Grid grid);
 
 bool checkIfPointIsGoal(Grid grid, Point p);
 
+enum Event event();
+
 #endif

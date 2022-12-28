@@ -3,8 +3,6 @@
 #include "grid.h"
 #include "sdl2.h"
 
-enum Event event();
-
 int main(){
 	// call function to initialize SDL2 window
 	
@@ -12,8 +10,8 @@ int main(){
 	
 	Grid grid = init_level("level2.txt");
 
-	enum Event (*handle_event)() = event_sdl2;
-	void (*handle_display)(Grid) = display_sdl2;
+	enum Event (*handle_event)() = event;
+	void (*handle_display)(Grid) = display_level;
 	if (handle_display == display_sdl2){
 		sdl_init();
 	}
@@ -51,22 +49,4 @@ int main(){
 		sdl_quit();
 	}
 	return 0;
-}
-
-enum Event event(){
-	char entry = fgetc(stdin);
-	switch(entry){
-		case 'q':
-			return Quit;
-		case 'w':
-			return Up;
-		case 's':
-			return Down;
-		case 'a':
-			return Left;
-		case 'd':
-			return Right;
-		default:
-			return None;
-	}
 }

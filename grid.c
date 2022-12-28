@@ -116,3 +116,20 @@ void freeGrid(Grid grid){
 }
 
 
+enum Event event(){
+	char entry = fgetc(stdin);
+	switch(entry){
+		case 'q':
+			return Quit;
+		case 'w':
+			return Up;
+		case 's':
+			return Down;
+		case 'a':
+			return Left;
+		case 'd':
+			return Right;
+		default:
+			return None;
+	}
+}
