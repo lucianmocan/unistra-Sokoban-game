@@ -1,16 +1,27 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 #include "grid.h"
 #include "sdl2.h"
 
-int main(){
+int main(int argc, char *argv[]){
+
+	enum Event (*handle_event)();
+	void (*handle_display)(Grid);
+	
+	if (argc == 1 || strcmp(argv[1],"--console") == 0){
+		// initialisation des pointeurs de fonction
+		handle_event = event;
+		handle_display = display_level;
+	}
+	else if (strcmp(argv[1], "--sdl2") == 0){
+		// initialisation des pointeurs de fonction
+		handle_event = event_sdl2;
+		handle_display = display_sdl2;
+	}
 	
 	// initialisation du niveau du jeu à partir d'un fichier.
 	Grid grid = init_level("level2.txt");
-
-	// initialisation des pointeurs de fonction
-	enum Event (*handle_event)() = event;
-	void (*handle_display)(Grid) = display_level;
 
 	// gestion de l'initialisation du SDL2 le cas échéant.
 	if (handle_display == display_sdl2){
