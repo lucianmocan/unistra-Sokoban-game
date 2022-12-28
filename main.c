@@ -4,20 +4,20 @@
 #include "sdl2.h"
 
 int main(){
-	// call function to initialize SDL2 window
 	
-	
-	
+	// initialisation du niveau du jeu à partir d'un fichier.
 	Grid grid = init_level("level2.txt");
 
+	// initialisation des pointeurs de fonction
 	enum Event (*handle_event)() = event;
 	void (*handle_display)(Grid) = display_level;
+
+	// gestion de l'initialisation du SDL2 le cas échéant.
 	if (handle_display == display_sdl2){
+		// call function to initialize SDL2 window
 		sdl_init();
 	}
 	handle_display(grid);
-	// display_level(grid);
-	// display_sdl2(grid);
 
 	bool run = true;
 	while(run){
@@ -33,8 +33,6 @@ int main(){
 				if (ev != None){
 					grid = move_player(grid, ev);
 					handle_display(grid);
-					// display_sdl2(grid);
-					// display_level(grid);
 				}
 				if (checkIfDone(grid)){
 					run = false;
@@ -44,6 +42,7 @@ int main(){
 		}
 	}
 
+	// gestion de la mise à fin du SDL2 le cas échéant.
 	if (handle_display == display_sdl2){
 		// call function to close SDL2 window
 		sdl_quit();
