@@ -5,6 +5,17 @@
 
 SDLContext context; 
 
+/** @brief 
+ * Initialise une variable global `context` de type SDLContext
+ *
+ * Si il y a erreur pendant l'intialisation:
+ *  context.window = NULL
+ *  ou 
+ *  context.renderer = NULL
+ *
+ * Les deux cas sont à testé !
+ * 
+ */
 void sdl_init() {
   int const width = 1280;
   int const height = 720;
@@ -25,6 +36,9 @@ void sdl_init() {
       .window = window, .renderer = renderer, .width = width, .height = height};
 }
 
+/** @brief
+ * nettoie la variable global context 
+ */
 void sdl_quit() {
   SDL_DestroyWindow(context.window);
   SDL_DestroyRenderer(context.renderer);
@@ -33,6 +47,11 @@ void sdl_quit() {
   SDL_Quit();
 }
 
+/**
+ * @brief Affiche la grille avec SDL2
+ * 
+ * @param grid Adresse de la grille à afficher
+ */
 void display_sdl2(Grid grid){
 
   int wallsCountHorizontal = (int) context.width / grid->column_number;
@@ -86,6 +105,11 @@ void display_sdl2(Grid grid){
   SDL_RenderPresent(renderer); // On affiche tout
 }
 
+/**
+ * @brief renvoye le type d'action à effectuer avec SDL2
+ * 
+ * @return enum Event 
+ */
 enum Event event_sdl2(){
 
   SDL_Event ev;
