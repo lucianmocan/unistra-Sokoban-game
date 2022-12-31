@@ -5,7 +5,7 @@ LDFLAGS = -lm -Wl,-rpath=install_dir/lib -Linstall_dir/lib -lSDL2
 SOURCES = $(wildcard *.c)
 HEADERS = $(wildcard *.h)
 OBJECTS = $(SOURCES:.c=.o)
-EXEC = main
+EXEC = sokoban
 DOCS = html
 LEVELS = $(wildcard *.txt)
 TARNAME = MOCAN_Lucian
