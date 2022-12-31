@@ -27,6 +27,10 @@ int main(int argc, char *argv[]){
 	if (handle_display == display_sdl2){
 		// call function to initialize SDL2 window
 		sdl_init();
+		if (context.window == NULL || context.renderer == NULL){
+			printf("Error! Cannot initialize SDL2! Program will quit now.\n");
+			exit(1);
+		}
 	}
 	handle_display(grid);
 
